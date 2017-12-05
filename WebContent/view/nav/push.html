@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>信息页面</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <link rel="stylesheet" href="../../resources/css/Goods.css" type="text/css"></link>
+    <script type="text/javascript" src="../../resources/js/jquery-1.7.1.min.js"></script>
+
+</head>
+
+<body>
+<!-- <form action="http://120.55.40.199:80/yyt_app/MainServlet" id="form1"
+		enctype="multipart/form-data" method="post" name="form1">
+	<input type="hidden" name="method" value="auditGoodsWeb"> -->
+<div class="infoPage">
+    <div class="infoPageCon">
+        <div class="accountInfo infoCon">
+            <div class="infoTitle">客户信息</div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商家ID：</span><input type="text" placeholder="" class="accountNum" id= "store_id" disabled="disabled" /></div>
+            <!--<div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否互评：</span><input type="text" placeholder="" class="accountNum" disabled="disabled" /></div>-->
+        </div>
+        <div class="basicInfo infoCon">
+            <div class="infoTitle">商品信息</div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品名称：</span><input type="text" placeholder="" class="bankAccount" id= "title" disabled="disabled" name="title"/></div>
+            <div class="info-input_1 input-bank"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品价格：</span><input type="text" placeholder="" class="licence" id= "price" disabled="disabled"/></div>
+        </div>
+        <div class="serviceInfo infoCon">
+            <div class="infoTitle">&nbsp;&nbsp;&nbsp;时  间&nbsp;&nbsp;&nbsp;</div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：</span><input type="text" placeholder="" class="accountNum" id= "start_date" disabled="disabled"/></div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失效时间：</span><input type="text" placeholder="" class="accountNum" id= "end_date" disabled="disabled"/></div>
+        </div>
+        <div class="bottomInfo">
+            <!--<div class="info-input" ><span>&nbsp;&nbsp;&nbsp;&nbsp;是否互评：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>-->
+            <!--<div class="info-input "><span>&nbsp;&nbsp;&nbsp;&nbsp;交易合同：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>-->
+            <div class="info-input input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备&nbsp;&nbsp;注：</span><input type="text" placeholder="" class="remarks" disabled="disabled" id="remark"/></div>
+            
+            
+            <!-- <div class="info-btn">
+                <div class="info-button active submitBtn" id="btok1" >通&nbsp;&nbsp;&nbsp;过</div>
+                <div class="info-button cancelBtn" id= "btok2" style="background-color:#999999">不通过</div>
+            </div> -->
+           
+        </div>
+        <div style="height:30px;" class="button">
+         <div style="float:left;margin-left:75%;margin-top:5px;">
+                	<input type="Button"  id= "btok1" value="通过" name="audit">
+                </div>
+              <div style="float:left;margin-left:10px;margin-top:5px;">
+                	<input type="Button"  id= "btok2" value="不通过" name="audit">
+                </div>
+                </div>
+    </div>
+    <div class="infoPageCon photoCon">
+        照片内容
+    </div>
+</div>
+<!-- </form> -->
+</body>
+<script type="text/javascript">
+//取出json字符串
+var data = sessionStorage.getItem("data");
+//把json字符串解析成json对象
+var obj = JSON.parse(data);
+//给文本框复制
+$("#store_id").val(obj.store_id);
+$("#title").val(obj.title);
+$("#price").val(obj.price);
+$("#start_date").val(obj.start_date);
+$("#end_date").val(obj.end_date);
+$("#remark").val(obj.remark);	
+
+	/* $("#btok1").click(function(){
+		alert("123");
+		var title=$("#title").val();
+		document.form1.submit();
+	}); */
+	var title=$("#title").val();
+	$("#btok2").click(function(){
+		$.ajax({
+			url: "http://120.55.40.199:80/yyt_app/WebMainServlet",
+  			type: "POST",
+            data:{"method":"auditGoodsWeb","title":title,"audit":"1"},
+            dataType: "json",
+            success: function(data){
+            	if(data.code==0){
+               	alert("已进行审核，审核结果为通过");
+            	}
+            	else{
+            		alert("失败");
+            		}
+       		 }
+         }); 
+	}); 
+	$("#btok1").click(function(){
+		$.ajax({
+			url: "http://120.55.40.199:80/yyt_app/WebMainServlet",
+  			type: "POST",
+            data:{"method":"auditGoodsWeb","title":title,"audit":"2"},
+            dataType: "json",
+            success: function(data){
+            	if(data.code==0){
+               	alert("已进行审核，审核结果为不通过");
+            	}
+            	else{
+            		alert("失败");
+            		}
+       		 }
+         }); 
+	});
+
+	
+    //显示完清空数据
+    sessionStorage.clear();
+    
+
+</script>
+</html>

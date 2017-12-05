@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>演艺通后台管理界面</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+<link rel="stylesheet" href="../resources/css/layui.css">
+<link rel="stylesheet" href="../resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="../homeNew.css" />
+<script type="text/javascript" src="../jquery-1.11.3.min.js"></script>
+<!-- 		<script type="text/javascript" src="../resources/js/jquery-3.1.1.min.js"></script>
+ -->
+<script type="text/javascript" src="../homeNew.js"></script>
+<style>
+li>a,dl>a {
+	background-color: #f0f9fd
+}
+
+.lid {
+	text-indent: 8px;
+	margin-right: 5px;
+}
+
+.lid:hover {
+	cursor: pointer;
+}
+</style>
+<body>
+	<div class="layui-layout layui-layout-admin">
+		<!--顶部导航栏-->
+		<div class="layui-header"
+			style="background:url(../image/topbg.gif) repeat-x;">
+			<div class="layui-logo"
+				style="background:url(../image/topleft.jpg) no-repeat; font-weight:bold; color:White;">
+				<img src="../resources/image/logo.png" style="height: 35px"></img>
+				演艺通后台管理系统
+			</div>
+			<!-- 头部区域（可配合layui已有的水平导航） -->
+			<ul class="layui-nav layui-layout-left">
+				<li id="nav1" class="layui-nav-item"><a href="javascript:; ">信息管理</a>
+
+				</li>
+				<li id="nav2" class="layui-nav-item"><a href="javascript:;">人员管理</a>
+				</li>
+				<li id="nav3" class="layui-nav-item"><a href="javascript:;">软件帮助</a>
+				</li>
+			</ul>
+			<ul class="layui-nav layui-layout-right"
+				style="background: url(../image/topright.jpg) no-repeat right;">
+				<li class="layui-nav-item"><a href="javascript:;"> <img
+						src="http://t.cn/RCzsdCq" class="layui-nav-img">管理员，你好！</a>
+					<!-- <dl class="layui-nav-child">
+						<dd>
+							<a href="../page/register.jsp" >注册</a>
+						</dd>
+						<dd>
+							<a href="../page/login.jsp">登录</a>
+						</dd>
+						<dd>
+							<a href="javascript:;">修改密码</a>
+						</dd>
+					</dl>  -->
+					</li>
+			</ul>
+		</div>
+		<div class="layui-side layui-bg-black">
+			<div id="sidenav" class="layui-side-scroll"
+				style="background-color: #F0F9FD">
+				<!-- 左侧导航区域（可配合layui已有的垂直导航）动态加载 -->
+				<ul class="layui-nav layui-nav-tree" lay-filter="test">
+					<li class="layui-nav-item"><a class="" href="javascript:;"
+						style="background-color: #3D96C9"
+						onclick="$('#navul').slideToggle('slow')">管理菜单 <span
+							class="layui-nav-more"></span>
+					</a></li>
+				</ul>
+
+				<div id="navul" class="layui-nav layui-nav-tree" lay-filter="test">
+					<dl class="leftmenu">
+
+						<dd>
+							<div class="title">
+								<span><img src="../image/leftico01.png">
+								</span>用户管理
+							</div>
+							<ul class="menuson">
+								<li class="liactive"><cite></cite> <a id="solder" href="../page/solder.jsp" target="table">商户</a><i></i>
+									<img src="../resources/image/11.png" class="liactiveImg" /></li>
+								<li><cite></cite> <a id="user" href="../page/user.jsp" target="table">用户</a><i></i> <img
+									src="../resources/image/12.png" class="liactiveImg" /></li>
+
+							</ul>
+						</dd>
+
+						<dd>
+							<div class="title">
+								<span><img src="../image/leftico02.png">
+								</span>交易管理
+							</div>
+							<ul class="menuson">
+								<li class="liactive"><cite></cite> <a id="history"
+									href="../page/history.jsp" target="table">历史交易</a><i></i> <img
+									src="../resources/image/history.png" class="liactiveImg" />
+								</li>
+								<li><cite></cite> <a id="comment" href="../page/comment.jsp" target="table">历史评价</a><i></i>
+									<img src="../resources/image/evaluation.png"
+									class="liactiveImg" />
+								</li>
+
+								<li><cite></cite> <a id="managent" href="../page/managent.jsp" target="table">售后管理</a><i></i>
+									<img src="../resources/image/refund.png" class="liactiveImg" />
+								</li>
+							</ul>
+						</dd>
+
+						<dd>
+							<div class="title">
+								<span><img src="../image/leftico03.png">
+								</span>商品管理
+							</div>
+							<ul class="menuson">
+								<li><cite></cite> <a id="type" href="../page/type.jsp" target="table">商品类目</a><i></i>
+								</li>
+								<li><cite></cite> <a id="info" href="../page/info.jsp" target="table">商品信息</a><i></i>
+								</li>
+							</ul>
+						</dd>
+
+						<dd>
+							<div class="title">
+								<span><img src="../image/leftico04.png">
+								</span>审核
+							</div>
+							<ul class="menuson">
+								<li><cite></cite> <a id="push" href="../page/push.jsp" target="table">商品发布</a><i></i>
+								</li>
+								<li><cite></cite> <a id="success" href="../page/success.jsp" target="table">成功案例</a><i></i>
+								</li>
+								<li><cite></cite> <a id="viedo" href="../page/viedo.jsp" target="table">视频秀</a><i></i>
+								</li>
+							</ul>
+
+						</dd>
+
+					</dl>
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-body" style="display:display">
+			<!-- 内容主体区域 -->
+
+			<div class="layui-container"
+				style="padding-top: 15px; margin-left: 5px;">
+				<div  class="layui-row ">
+					<div id="div1" class="layui-col-md1" style="margin-left: 10px">
+						<!--<div  style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;">&#xe613;</i></div>-->
+						<div style="text-align: left">
+							<a href="../page/user.jsp" target="table" style="align-content: center"><img
+								src="../resources/image/01.png" style="height: 55px"></img> </a>
+						</div>
+					</div>
+
+					<div id="div2" data-method="notice" class="layui-col-md1" style="margin-left: 10px;cursor:pointer;display:none" >
+
+						<!--<div  style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;">&#xe614;</i></div>-->
+						<div style="text-align: left">
+							<a style="align-content: center"><img
+								src="../resources/image/02.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+					<div id="div3" class="layui-col-md1" style="margin-left: 10px">
+
+						<!--<div  style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;">&#xe614;</i></div>-->
+						<div style="text-align: left">
+							<a href="../page/admin.jsp" target="table" style="align-content: center"><img
+								src="../resources/image/03.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+					<div id="div4" class="layui-col-md1" style="margin-left: 5px;display:none;cursor:pointer">
+
+						<!--<div  style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;">&#xe614;</i></div>-->
+						<div style="text-align: left">
+							<a  href="../view/nav/version.html" target="table" style="align-content: center"><img
+								src="../resources/image/04.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+					<div id="div5" class="layui-col-md1" style="margin-left: 5px;display:none;cursor:pointer">
+
+						<!--<div  style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;">&#xe614;</i></div>-->
+						<div style="text-align: left">
+							<a href="../view/nav/public.html" target="table" style="align-content: center"><img
+								src="../resources/image/05.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+					<div id="div6" class="layui-col-md1" style="margin-left: 5px;display:none;cursor:pointer">
+
+						<!--<div  style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;">&#xe614;</i></div>-->
+						<div style="text-align: left">
+						<a>
+							<img src="../resources/image/06.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+					<div id="div7" class="layui-col-md1" style="margin-left: 5px;display:none;cursor:pointer">
+						<!--<div style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;" >&#xe60f;</i></div>-->
+						<div style="text-align: left">
+							<a href="../page/admin.jsp" target="table" style="align-content: center"><img
+								src="../resources/image/07.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+					<div id="div8" data-method="notice" class="layui-col-md1" style="margin-left: 5px;display:none;cursor:pointer">
+						<!--<div style="margin-left: 7px;"><i class="layui-icon" style="font-size: 40px; color: #f0f9fd;" >&#xe60f;</i></div>-->
+						<div style="text-align: left">
+							<a href="../view/nav/website.html" target="table" style="align-content: center"><img
+								src="../resources/image/08.png" style="height: 55px"></img> </a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<hr>
+
+				
+				
+			<div class="tab-content" style="width:100%;margin-top: 2px">
+
+				
+				<iframe id ="table" name="table" src="../page/solder.jsp" style="position: relative;float: left;width:100%;height:540px;margin-top: 2px;"></iframe>
+			</div>
+		</div>
+
+		<div class="layui-footer" style="margin-bottom: 0;">
+			<!-- 底部固定区域 -->
+			演艺通后台管理系统
+		</div>
+	</div>
+	<!--动态生成tab-->
+	<script src="../resources/js/closable-tab-div.js"></script>
+	<script src="../resources/js/jquery-3.1.1.min.js"></script>
+	<!--引入layui-->
+	<script src="../resources/layui.js"></script>
+	<!-- <script src="../resources/js/closable-tab-div.js"></script> -->
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<script>
+	 
+			//JavaScript代码区域
+			//  使用element模块，使用layui.js
+			layui.use(['layer', 'laydate', 'table', 'element'], function() {
+				var layer = layui.layer,
+					laydate = layui.laydate,
+					table = layui.table,
+					form = layui.form;
+					element = layui.element;
+				
+					$('#div6').on('click',function() {
+						layer.open({
+							title:  '<div style="font-size:x-large"><b>APP轮播图</b></div>',
+							type: 2,
+							area: ['580px', '550px'],
+							fixed: false, //不固定
+							maxmin: true,							
+							content: urlRootContext + '/view/nav/addImg.jsp',
+
+						});
+						layer.full(index);
+					});
+
+							element.init();
+							var urlRootContext = (function() {
+								var strPath = window.document.location.pathname;
+								var postPath = strPath.substring(0, strPath
+										.substr(1).indexOf('/') + 1);
+								return postPath;
+							})();
+							
+							
+/***************************顶部导航栏切换显示*****************************************/
+							$("#nav1").on("click", function(event) {
+								$("#div1").show();
+								$("#div2").hide();
+								$("#div3").show();
+								$("#div4").hide();
+								$("#div5").hide();
+								$("#div6").hide();
+								$("#div7").hide();
+								$("#div8").hide();
+							});
+							$("#nav2").on("click", function(event) {
+								$("#div1").hide();
+								$("#div2").hide();
+								$("#div3").hide();
+								$("#div4").hide();
+								$("#div5").hide();
+								$("#div6").hide();
+								$("#div7").show();
+								$("#div8").hide();
+							});
+							$("#nav3").on("click", function(event) {
+								$("#div1").hide();
+								$("#div2").hide();
+								$("#div3").hide();
+								$("#div4").show();
+								$("#div5").show();
+								$("#div6").show();
+								$("#div7").hide();
+								$("#div8").show();
+							});
+							var id = "solder";
+							var item = {
+								'id' : "solder",
+								'name' : "商户",
+								'url' : urlRootContext
+										+ "/view/nav/sidenav1.html",
+								'closable' : true
+							};
+							closableTab.addTab(item);
+							table.render({
+								id: "demo",
+								elem: "#demo",
+								url :'http://120.55.40.199:8080/yyt_app/WebWebMainServlet',
+								where: {method: 'searchAllStoresWeb'}, //如果无需传递额外参数，可不加该参数
+								method: 'post' ,//如果无需自定义HTTP类型，可不加该参数
+								cols: [
+									[
+
+										{
+											field: 'id',
+											width: 80,
+											sort: true,
+											title: 'ID'
+										},
+										{
+											field: 'name',
+											width: 80,
+											templet: '#usernameTpl',
+											title: '商家名称'
+										},
+										{
+											field: 'legal',
+											width: 80,
+											sort: true,
+											title: '法人代表'
+										},
+										{
+											field: 'linkman',
+											width: 100,
+											title: '联络人'
+										},
+										{
+											field: 'account',
+											width: 100,
+											title: '账号'
+										},
+										{
+											field: 'set_time',
+											width: 135,
+											sort: true,
+											style: 'background-color: #e2e2e2;',
+											title: '入驻时间'
+										},
+										{
+											field: 'license',
+											width: 120,
+											sort: true,
+											title: '营业执照编号'
+										},
+										{
+											field: 'bank',
+											width: 135,
+											sort: true,
+											title: '银行账号'
+										},
+										{
+											field: 'remark',
+											width: 135,
+											sort: true,
+											title: '备注'
+										},
+										{
+											fixed: 'right',
+											width: 170,
+											align: 'center',
+											toolbar: '#barDemo'
+										}
+										
+									]
+								],
+								height: 500,
+								sort: true,
+								page: true,
+								limits: [10],
+								limit: 10
+
+							});	
+							var checkStatus = table.checkStatus('demo');		
+							table.on('tool(demo)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+							var data = obj.data; //获得当前行数据
+							var layEvent = obj.event; //获得 lay-event 对应的值
+							var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+							if(layEvent === 'detail') { //查看
+								//数据传输
+								//把json对象转换成json字符串
+								var datastring = JSON.stringify(data);
+								//alert(datastring);
+								//传json字符串
+								sessionStorage.setItem("data",datastring);
+								parent.layer.open({
+									title:  '<div style="font-size:x-large"><b>商户详情</b></div>',
+									type: 2,
+									area: ['565px', '550px'],
+									fixed: false, //不固定
+									maxmin: true,							
+									content: urlRootContext + '/view/nav/searchsolder.html',
+
+								});
+								layer.full(index);
+							}
+							/* $("#div4").click(function(){				               
+								layer.open({
+								title:  '<div style="font-size:x-large"><b>软件信息</b></div>',
+								type: 2,
+								area: ['565px', '550px'],
+								fixed: false, //不固定
+								maxmin: true,							
+								content: urlRootContext + '/view/nav/version.html',
+
+							});
+							layer.full(index);
+						});
+							$("#div5").click(function(){				               
+									layer.open({
+									title:  '<div style="font-size:x-large"><b>软件信息</b></div>',
+									type: 2,
+									area: ['565px', '550px'],
+									fixed: false, //不固定
+									maxmin: true,							
+									content: urlRootContext + '/view/nav/version.html',
+
+								});
+								layer.full(index);
+							});
+							$("#div6").click(function(){				               
+								layer.open({
+								title:  '<div style="font-size:x-large"><b>软件信息</b></div>',
+								type: 2,
+								area: ['565px', '550px'],
+								fixed: false, //不固定
+								maxmin: true,							
+								content: urlRootContext + '/view/nav/version.html',
+
+							});
+							layer.full(index);
+						});
+							$("#div8").click(function(){				               
+								layer.open({
+								title:  '<div style="font-size:x-large"><b>软件信息</b></div>',
+								type: 2,
+								area: ['565px', '550px'],
+								fixed: false, //不固定
+								maxmin: true,							
+								content: urlRootContext + '/view/nav/version.html',
+
+							});
+							layer.full(index);
+						}); */
+							$("#add").click(function(){
+								parent.layer.open({
+									title:  '<div style="font-size:x-large"><b>新增商户</b></div>',
+									type: 2,
+									area: ['565px', '550px'],
+									fixed: false, //不固定
+									maxmin: true,							
+									content: urlRootContext + '/view/nav/addsolder.html',
+
+								});
+								layer.full(index);
+							});
+							if(layEvent == 'del') { //删除
+							 	alert(data.id);
+							 	parent.layer.confirm('删除之后，该商户无法通过手机APP平台登录演艺通系统', function(index){
+		        				obj.del();
+		        				layer.close(index);
+		        				$.ajax({
+		        				url: "http://120.55.40.199:8080/yyt_app/WebMainServlet",
+		                		type: "POST",
+		                		data:{method: 'deleteStoreByIdWeb',"account":data.account,"type":"商家"},
+		                		dataType: "json",
+		                		success: function(data){
+		                    	if(data.code==0){
+		                       		//删除这一行
+		                        	obj.del();
+		                       		//关闭弹框
+		                        	layer.close(index);
+		                        	parent.layer.msg("删除成功", {icon: 6});
+		                    	}
+		                    	else{
+		                        		parent.layer.msg("删除失败", {icon: 5});
+		                    		}
+		               		 	}
+
+		            			});
+		        			});
+						}	
+					});		
+										
+				});
+		</script>
+			<script type="text/html" id="barDemo">
+					<a class="layui-btn layui-btn-mini" lay-event="detail">查看</a>
+					<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+			</script>
+		  </body>
+
+</html>

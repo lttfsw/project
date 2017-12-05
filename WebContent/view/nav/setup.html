@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>设置页面</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <link rel="stylesheet" href="../../resources/css/setup.css" type="text/css"></link>
+    <script type="text/javascript" src="../../resources/js/jquery-1.7.1.min.js"></script>
+
+</head>
+
+<body>
+<div class="infoPage">
+    <div class="infoPageCon">
+        <div class="accountInfo infoCon">
+            <div class="infoTitle">系统预设角色</div>
+            <div class="info-input_1 input-licence">
+            <input type="text" placeholder="" class="accountNum" disabled="disabled" />
+            <input type="text" placeholder="" class="accountNum" disabled="disabled" />
+            <input type="text" placeholder="" class="accountNum" disabled="disabled" /></div>
+            
+        </div>
+        
+        <div class="basicInfo infoCon">
+            <div class="infoTitle">修改初试密码</div>
+            <div class="info-input_1 input-licence">
+            <input type="text" placeholder="" class="bankAccount" disabled="disabled"/>
+            
+            </div>
+            <div class="info-btn">
+                <div class="info-button active submitBtn" id="btok" >确&nbsp;&nbsp;&nbsp;定</div>
+                <div class="info-button cancelBtn" style="background-color:#999999">取&nbsp;&nbsp;&nbsp;消</div>
+            </div> 
+            
+        </div>
+        <div class="serviceInfo infoCon">
+            <div class="infoTitle">&nbsp;&nbsp;&nbsp;会员到期时间提醒&nbsp;&nbsp;&nbsp;</div>
+            <div class="info-input"><input type="text" placeholder="" class="accountNum" disabled="disabled"/><span>工作日</span></div>
+            <div class="info-btn">
+                <div class="info-button active submitBtn" id="btok" >确&nbsp;&nbsp;&nbsp;定</div>
+                <div class="info-button cancelBtn" style="background-color:#999999">取&nbsp;&nbsp;&nbsp;消</div>
+            </div> 
+        </div>
+        <!-- <div class="bottomInfo">
+            <div class="info-input" ><span>&nbsp;&nbsp;&nbsp;&nbsp;是否互评：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>
+            <div class="info-input "><span>&nbsp;&nbsp;&nbsp;&nbsp;交易合同：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>
+            <div class="info-input input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备&nbsp;&nbsp;注：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>
+            <br/>  <br/>  <br/>
+            <div class="info-input" ></div>
+            <div class="info-btn">
+                <div class="info-button active submitBtn" id="btok" >确&nbsp;&nbsp;&nbsp;定</div>
+                <div class="info-button cancelBtn" style="background-color:#999999">取&nbsp;&nbsp;&nbsp;消</div>
+            </div> -->
+        </div>
+    </div>
+    <div class="infoPageCon photoCon">
+        照片内容
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+    //alert(data.account);
+
+    //取出json字符串
+    var data = sessionStorage.getItem("data");
+    //把json字符串解析成json对象
+    var obj = JSON.parse(data);
+    //给文本框复制
+    $("#store_name").val(obj.store_name);
+    $("#legal_representative").val(obj.legal_representative);
+    $("#liaisons").val(obj.liaisons);
+    $("#account").val(obj.account);
+
+
+    //显示完清空数据
+    sessionStorage.clear();
+    var o={"account":"123","password":"321"};
+    $("#btok").click(function(){
+        //alert("nihao");
+        $.ajax({
+            url: "http://120.55.40.199/yyt_war/registerUser",
+            //url:"http://120.55.40.199:80/demo/test",
+            type: "POST",
+            //data:{"account":"123","password":"321"},
+            data:JSON.stringify(o),
+            dataType: "json",
+            contentType: "application/json",
+            success: function(data){
+                alert(data);
+            }
+        });
+        //alert("你好");
+    });
+    //
+</script>
+</html>

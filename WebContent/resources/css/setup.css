@@ -1,0 +1,117 @@
+.infoPage{
+    width:94%;
+    height:550px;
+    background-color: #99d5e9;
+    padding:20px 10px 20px 40px;
+    border:1px solid #68839b;
+    border-radius: 4px;
+}
+.infoTxt{
+    margin-bottom: 6px;
+}
+.infoPageCon{
+    width:90%;
+    border: 1px solid #68839b;
+    padding:4px 20px;
+}
+.menuInfo{
+    color: #fff;
+}
+.photoMenu{
+    margin-left:-4px;
+}
+.menuInfo .menu{
+    display: inline-block;
+    background: #cccbcb;
+    padding:4px 6px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: pointer;
+}
+.menuInfo .menu.active{
+    background: #3383b1 !important;
+}
+.infoCon{
+    position: relative;
+    border:1px solid #9fc3d9;
+    border-radius: 4px;
+    padding:16px;
+    margin-top:50px;
+}
+.infoTitle{
+    display: inline-block;
+    border:1px solid #babdc4;
+    background: #fff;
+    border-radius: 4px;
+    position: absolute;
+    top:-16px;
+    
+    padding:4px 6px;
+}
+.info-inputR,.info-btn{
+    text-align: right;
+}
+.info-input,.info-btn{
+    display: inline-block;
+    width:48%;
+    margin-top:30px;
+}
+.info-input_1{
+    display: inline-block;
+    
+    margin-top:30px;
+    margin-left:15px;
+}
+.info-input span{
+}
+.info-input_1 span{
+}
+.info-input input{
+    height:20px;
+    line-height: 20px;
+    border:1px solid #9fc3d9;
+    background: #fff;
+    margin-left:45px;
+    border-radius: 4px;
+    text-indent: 6px;
+    width:80px;
+}
+.info-input_1 input{
+    height:20px;
+    line-height: 20px;
+    border:1px solid #9fc3d9;
+    background: #fff;
+    border-radius: 4px;
+    text-indent: 6px;
+    margin-left:30px;
+}
+.input-bank{
+    width: 80% !important;
+}
+.input-licence{
+    
+}
+.bottomInfo{
+    position: relative;
+    padding:0px 30px;
+    margin-top: 4px;
+}
+.info-button{
+    display: inline-block;
+    background: #cccbcb;
+    padding:2px 12px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cancelBtn{
+    margin-left: 10px;
+}
+.info-button.active{
+    background: #3383b1 !important;
+}
+
+.photoCon{
+    display: none;
+}

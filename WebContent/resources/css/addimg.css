@@ -1,0 +1,111 @@
+.maindiv
+{
+	position:relative;
+	height:480px;
+	width:550px;
+	border:1px solid black;
+	float:left;
+	padding:0;
+	margin:0px;
+	font-size:14px;
+	background-color: #CBE8EF; 
+}
+.bodydiv
+{
+	height:360px;
+	width:500px;
+	margin-top: 10px;
+	margin-left: 20px;
+	position: relative;
+	
+	
+}
+.onediv
+{
+	float:left;
+	margin-top:15px;
+	margin-left:280x;
+	height: 150px;
+	width: 200px;
+	margin-bottom: 10px;
+}
+.onediv2
+{
+	float:right;
+	height: 150px;
+	width: 200px;
+	margin-top:15px;
+	margin-right:30px;
+	margin-bottom: 10px;
+}
+.bottomdiv
+{
+	height:80px;
+	width:500px;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.cast
+{
+	height:100px;
+	width:98%;
+	float:left;
+	border:1px dashed #aaaaaa;
+}
+.title
+{
+	height:25px;
+	width:100%;
+	float:left;
+	line-height:25px;
+	color:black;
+	text-indent:5px;
+}
+.button
+{
+	float:right;
+	height:23px;
+	margin-top:1px;
+	margin-bottom: 1px;
+	margin-right: 5px;
+	right:5px;
+}
+.input
+{
+	height:25px;
+	width:100%;
+	float:left;
+	padding:1px;
+}
+.textclass
+{
+	height:23px;
+	width:200px;
+	float:left;
+	
+}
+.btok
+{
+	float:right;
+	margin-right: 50px;
+	margin-top: 40px;
+}
+.btcancel
+{
+	float:right;
+	margin-right: 30px;
+	margin-top: 40px;
+}
+input[type="button"]
+{
+	border:1px solid #eee;
+}
+
+.setcolor
+{
+	color:white;
+	background-color:#3180AF; 
+}
+input[type="button"]:hover{
+	cursor: pointer;
+}

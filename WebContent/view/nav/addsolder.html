@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>信息页面</title>
+		
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+
+	<script type="text/javascript" src="../../resources/js/info.js"></script>
+	<link rel="stylesheet" href="../../resources/css/info.css" type="text/css"></link>
+	<script type="text/javascript" src="../../jquery-1.11.3.min.js"></script>
+<script language=javascript>
+        $(function () {
+        	
+            $(".file").change(function () {
+            	var id = $(this).attr("id");
+                var file = this.files[0] // 获取input上传的图片数据;
+                url = window.URL.createObjectURL(file) // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+                if (id=="file1") 
+                {
+                    $("#imgs1").attr("src", url);
+                }
+                if (id=="file2") 
+                {
+                    $("#imgs2").attr("src", url);
+                }   
+            })
+            
+       		
+          
+        })
+</script>
+	</head>
+
+	<body>
+	
+	<form action="http://120.55.40.199:80/yyt_app/UploadStoreServlet" id="form1"
+	enctype="multipart/form-data" method="post" name="form1">	             
+	     <!--  <input type="submit" value="提交"> -->
+		<div class="infoPage">
+			<div class="menuInfo">
+				<div class="menu active">商户信息</div>
+				<div class="menu photoMenu">照片信息</div>
+			</div>
+			<div class="infoPageCon">
+				<div class="accountInfo infoCon">
+					<div class="infoTitle">账号信息</div>
+					<div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：</span><input type="text" placeholder="" class="accountNum" name= "account" id="account"/></div>
+					<div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</span><input type="text" placeholder="" class="accountNum" name="password" id="password"/></div>
+					<input type="hidden" name="type" value="商家">
+				</div>
+				<div class="basicInfo infoCon">
+					<div class="infoTitle">基本信息</div>
+					<div class="info-input"><span>企业名称：</span><input type="text" placeholder="" class="companyName" name="name" id="name"/></div>
+					<div class="info-input info-inputR"><span>法人代表：</span><input class="account" type="text" placeholder="" class="representative" name="legal" id="legal"/></div>
+					<div class="info-input"><span>&nbsp;&nbsp;&nbsp;联络人：</span><input class="account" type="text" placeholder="" class="contactName" name="linkman" id="linkman"/></div>
+					<div class="info-input info-inputR"><span>座机号码：</span><input class="account" type="text" placeholder="" id="tel" name="tel" class="telphone" /></div>
+					<div class="info-input"><span>手机号码：</span><input type="text" placeholder="" class="cellphone" id="phone" name="phone"/></div>
+					<div class="info-input info-inputR"><span>入驻时间：</span><input type="text" placeholder="" class="checkInTime" id="setTime" name="setTime"/></div>
+					<!-- <div class="info-input input-bank"><span>银行账号：</span><input type="text" placeholder="" class="bankAccount" id="bank" name="bank"/></div>
+					<div class="info-input input-licence"><span>营业执照：</span><input type="text" placeholder="" class="licence" id="licence" name="licence"/></div> -->
+				</div>
+				<div class="serviceInfo infoCon">
+					<div class="infoTitle">服务信息</div>
+					<div class="info-input"><span>会员等级：</span><input type="text" placeholder="" class="accountNum" id="rank" name="rank"/></div>
+					<!-- <div class="info-input info-inputR"><span>服务协议编号：</span><input type="text" placeholder="" class="accountNum" id="contract"/></div> -->
+					<div class="info-input"><span>服务协议：</span><input type="text" placeholder="" class="accountNum" id="contract" name="contract"/></div>
+					<!-- <div class="info-btn"><div class="info-button tiBtn">提&nbsp;&nbsp;&nbsp;醒</div></div> -->
+				</div>
+				<div class="bottomInfo">
+					<div class="info-input input-remarks"><span>&nbsp;&nbsp;&nbsp;&nbsp;备注：</span><input type="text" placeholder="" class="remarks" name="remark" id="remark"/></div>
+					<div class="info-btn">
+						<input type="Button"  id= "btoks" value="提交">
+						<!-- <div class="info-button active submitBtn" id="btok">确&nbsp;&nbsp;&nbsp;定</div> -->
+						<!-- <div class="info-button cancelBtn">取&nbsp;&nbsp;&nbsp;消</div> -->
+					</div>
+				</div>
+			</div>
+			<div class="infoPageCon photoCon">
+				<div class="info-input_a"><span>营业执照编号：</span><input type="text" placeholder="" class="accountNum" id="license" name="license"/></div>
+				<div style="position: relative;border: 1px solid black;height: 200px;width: 40%;left: 30%;margin-top: 20px;margin-bottom: 20px">
+				    <img src="1.png" style="width: 100%;height: 100%" id="imgs1"/>
+				</div>
+				<div class="info-input_a" style="border:0px solid black;">
+				   <input name="license_img"  type="file" class="file" id="file1" style="text-align: center;">
+				</div>
+				<div class="info-input_a"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;银行账号：</span><input type="text" placeholder="" name="bank" id="bank" class="accountNum" /></div>
+
+				<div style="position: relative;border: 1px solid black;height: 200px;width: 40%;left: 30%;margin-top: 20px;margin-bottom: 20px">
+				   <img src="1.png" style="width: 100%;height: 100%" id="imgs2"/></div>
+				<div class="info-input_a" style="border:0px solid black;">
+				   <input name="account_img"  type="file" class="file" id="file2"  style="text-align: center;">
+				</div>
+			</div>
+
+		</div>
+	
+	</form>
+	
+	
+	
+		
+	</body>
+	<script type="text/javascript">
+	$("#btoks").click(function(){
+		
+		 var account = $("#account").val().trim();
+	   	//alert(account);
+		 var password = $("#password").val().trim();
+		 
+		 var name = $("#name").val().trim();
+		 var legal = $("#legal").val().trim();
+		 var linkman = $("#linkman").val().trim();
+		 var tel = $("#tel").val().trim();
+		 var phone = $("#phone").val().trim();
+		 
+		 var setTime = $("#setTime").val().trim();
+		 //alert("321");
+		 var license = $("#license").val().trim();
+		 //alert("123");
+		 var license_img = $("#file1").val().trim();//获取营业执照的图片
+		 //alert(license_img);
+		 var bank = $("#bank").val().trim();
+		 //alert("技术"); 
+		 var bank_img = $("#file2").val().trim(); //图片
+		 var rank = $("#rank").val().trim();
+		 var contract = $("#contract").val().trim();
+		 var remark = $("#remark").val().trim();
+		 if((account.length!=11)||(password.length<6)||name==""||legal==""||linkman==""||
+					tel==""||phone==""||setTime==""||license==""||license_img==""||
+					bank==""||bank_img==""||rank==""||contract==""||remark=="")
+					 {
+					 	alert("字段不为空且账号为手机号码，账号不能重复,密码长度必须大于6位！请重新输入！");
+					 	return ;
+					 }
+		/* if(password.value.length<6){
+  				alert("密码长度必须大于六位！");
+  				return;
+			}
+		if(account.value.length==11){
+				alert("手机号码格式不正确！");
+				return;
+		}  */
+		document.form1.submit();
+	})
+
+	 /* $(function(){
+	   $("#btok").click(function(){
+		   var account = $("#account").val();
+		   alert(account);
+			 var password = $("#password").val().trim();
+			 var name = $("#name").val();
+			 var legal = $("#legal").val();
+			 var linkman = $("#linkman").val();
+			 var tel = $("#tel").val();
+			 var phone = $("#phone").val();
+			 var setTime = $("#setTime").val();
+			 var license = $("#license").val();
+			 //var license_img = $("#license_img").val();//获取营业执照的图片
+			 var bank = $("#bank").val();
+			 //var bank_img = $("#bank_img").val(); //图片
+			 var rank = $("#rank").val();
+			 var contract = $("#contract").val();
+			 var remark = $("#remark").val();
+		 alert("123");
+		 $.ajax({
+				url: "http://120.55.40.199:80/yyt_app/MainServlet",
+     			type: "POST",
+     			//data:{"method":addStoreWeb'},
+                data:{"method":"addStoreWeb","account":account,"type":"商家","password":password,"name":name,"legal":legal,"linkman":linkman,"tel":tel,"phone":phone,"setTime":setTime,"license_img":"123","bank":bank,"bank_img":"123","rank":rank,"contract":contract,"license":license,"remark":remark},
+                //data:JSON.stringify(o),
+               dataType: "json",
+               success: function(data){
+
+               	if(data.code==0){
+                  	alert("成功");
+               	}
+               	else{
+               		alert("失败");
+               		}
+          		 }
+            }); 
+	});
+ }); */
+	</script>
+</html>

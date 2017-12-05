@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>信息页面</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <link rel="stylesheet" href="../../resources/css/Refund.css" type="text/css"></link>
+    <script type="text/javascript" src="../../resources/js/jquery-1.7.1.min.js"></script>
+
+</head>
+
+<body>
+<div class="infoPage">
+    <div class="infoPageCon">
+        <div class="accountInfo infoCon">
+            <div class="infoTitle">订单详情</div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;订单编号：</span><input type="text" placeholder="" class="accountNum" disabled="disabled" id ="order_id"/></div>
+            <!--<div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否互评：</span><input type="text" placeholder="" class="accountNum" disabled="disabled" /></div>-->
+        </div>
+        <div class="basicInfo infoCon">
+            <div class="infoTitle">&nbsp;客户 ID&nbsp;</div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;家&nbsp;I&nbsp;D：</span><input type="text" placeholder="" class="bankAccount" disabled="disabled" id ="account"/></div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;卖&nbsp;家&nbsp;I&nbsp;D：</span><input type="text" placeholder="" class="licence" disabled="disabled" id ="store_id"/></div>
+        </div>
+        <div class="serviceInfo infoCon">
+            <div class="infoTitle">&nbsp;&nbsp;&nbsp;时  间&nbsp;&nbsp;&nbsp;</div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;申请时间：</span><input type="text" placeholder="" class="accountNum" disabled="disabled" id ="apply_time"/></div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退款时间：</span><input type="text" placeholder="" class="accountNum" disabled="disabled" id ="refund_date"/></div>
+        </div>
+        <div class="bottomInfo">
+            <div class="info-input_1 input-licence "><span>&nbsp;&nbsp;&nbsp;退款原因：</span><input type="text" placeholder="" class="remarks" disabled="disabled" id ="refund_reason"/></div>
+            <div class="info-input_1 input-licence "><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备&nbsp;&nbsp;注：</span><input type="text" placeholder="" class="remarks" disabled="disabled" id ="remark"/></div>
+            <br/>
+            <div class="info-input" ></div>
+            <!-- <div class="info-btn">
+                <div class="info-button active submitBtn" id="btok" >确&nbsp;&nbsp;&nbsp;定</div>
+                <div class="info-button cancelBtn" style="background-color:#999999">取&nbsp;&nbsp;&nbsp;消</div>
+            </div> -->
+        </div>
+    </div>
+    <div class="infoPageCon photoCon">
+        照片内容
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+    //alert(data.account);
+
+    //取出json字符串
+    var data = sessionStorage.getItem("data");
+    //把json字符串解析成json对象
+    var obj = JSON.parse(data);
+    //给文本框复制
+    $("#order_id").val(obj.order_id);
+    $("#account").val(obj.account);
+    $("#store_id").val(obj.store_id);
+    $("#apply_time").val(obj.apply_time);
+    $("#refund_date").val(obj.refund_date);
+    $("#refund_reason").val(obj.refund_reason);
+    $("#remark").val(obj.remark);
+
+    //显示完清空数据
+    sessionStorage.clear();
+
+</script>
+</html>

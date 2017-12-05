@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>修改密码</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script> 
+    <link rel="stylesheet" href="../../resources/css/modify.css" type="text/css"></link>
+    <script type="text/javascript" src="../../resources/js/jquery-1.7.1.min.js"></script>
+
+</head>
+
+<body>
+<div class="infoPage">
+    <div class="infoPageCon">
+       
+        <div class="basicInfo infoCon">
+            <div class="infoTitle">修改密码</div>
+            <div class="info-input_1 input-licence"><span style="margin-left:55px">账&ensp;&ensp;号:&ensp;&ensp;</span><input type="text" placeholder="" id="account" disabled="disabled"/></div>
+            <div class="info-input_1 input-bank"><span  style="margin-left:55px">新&ensp;密&ensp;码：</span><input type="text" placeholder="" id="new_pwd" /></div>
+            <div class="info-input_1 input-bank"><span  style="margin-left:55px">确认密码：</span><input type="text" placeholder="" id="confirm" /></div>
+        </div>
+       
+        <div class="bottomInfo">
+           
+            
+            <div class="info-btn">
+            <p>密码建议：为了安全，请输入6~16位,包含数字（0到9），大小写字符（A-Z，a-z）。</p>
+                <div class="info-button active submitBtn" id="btok" >确&nbsp;&nbsp;&nbsp;定</div>
+                <div class="info-button cancelBtn" style="background-color:#999999">取&nbsp;&nbsp;&nbsp;消</div>
+            </div>
+        </div>
+    </div>
+    <div class="infoPageCon photoCon">
+        照片内容
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    //取传递的值
+	var name = sessionStorage.getItem("data");
+	$("#account").val(name);
+    $("#btok").click(function(){    	
+    	 var userpass = $("#new_pwd").val();
+         var userconfirm = $("#confirm").val();
+         if(userpass==""||userconfirm=="")
+         {
+            alert("用户信息不完整，请重新输入！");
+            return;
+         }
+         if(userpass!=userconfirm)
+        {
+        	alert("输入的确认密码不正确，请重新输入！");
+        	return;
+        }
+         //缺少与旧密码判断的逻辑，缺少判断输入的密码长度
+        $.ajax({
+            url: "http://120.55.40.199:80/yyt_app/WebMainServlet",
+            type: "POST",
+        	data:{"method":"resetPasswordWeb","account":name,"newPassword":userpass},
+            dataType: "json",
+            success: function(mydata){
+            	if(mydata.code==0)
+            	{
+            		alert("密码修改成功！");
+            		window.location.href='../../login.jsp';
+            	}
+            	if(mydata.code==1)
+            	{
+            		alert("密码修改失败，请重新输入！");
+            		return;
+            	}
+            }
+        });
+    });
+    //
+</script>
+</html>

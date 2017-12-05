@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>信息页面</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <link rel="stylesheet" href="../../resources/css/Goods.css" type="text/css"></link>
+    <script type="text/javascript" src="../../resources/js/jquery-1.7.1.min.js"></script>
+
+</head>
+
+<body>
+<div class="infoPage">
+    <div class="infoPageCon">
+        <div class="accountInfo infoCon">
+            <div class="infoTitle">客户信息</div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商家ID：</span><input type="text" placeholder="" class="accountNum" id= "store_id" disabled="disabled" /></div>
+            <!--<div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否互评：</span><input type="text" placeholder="" class="accountNum" disabled="disabled" /></div>-->
+        </div>
+        <div class="basicInfo infoCon">
+            <div class="infoTitle">商品信息</div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品名称：</span><input type="text" placeholder="" class="bankAccount" id= "title" disabled="disabled"/></div>
+            <div class="info-input_1 input-bank"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品价格：</span><input type="text" placeholder="" class="licence" id= "price" disabled="disabled"/></div>
+        </div>
+        <div class="serviceInfo infoCon">
+            <div class="infoTitle">&nbsp;&nbsp;&nbsp;时  间&nbsp;&nbsp;&nbsp;</div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：</span><input type="text" placeholder="" class="accountNum" id= "start_date" disabled="disabled"/></div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;失效时间：</span><input type="text" placeholder="" class="accountNum" id= "end_date" disabled="disabled"/></div>
+        </div>
+        <div class="bottomInfo">
+            <!--<div class="info-input" ><span>&nbsp;&nbsp;&nbsp;&nbsp;是否互评：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>-->
+            <!--<div class="info-input "><span>&nbsp;&nbsp;&nbsp;&nbsp;交易合同：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>-->
+            <div class="info-input input-licence"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备&nbsp;&nbsp;注：</span><input type="text" placeholder="" class="remarks" disabled="disabled" id="remark"/></div>
+            <br/>  <br/>  <br/>
+            <div class="info-input" ></div>
+            <!-- <div class="info-btn">
+                <div class="info-button active submitBtn" id="btok" >确&nbsp;&nbsp;&nbsp;定</div>
+                <div class="info-button cancelBtn" style="background-color:#999999">取&nbsp;&nbsp;&nbsp;消</div>
+            </div> -->
+        </div>
+    </div>
+    <div class="infoPageCon photoCon">
+        照片内容
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+    //alert(data.account);
+
+    //取出json字符串
+    var data = sessionStorage.getItem("data");
+    //把json字符串解析成json对象
+    var obj = JSON.parse(data);
+    //给文本框复制
+    $("#store_id").val(obj.store_id);
+    $("#title").val(obj.title);
+    $("#price").val(obj.price);
+    $("#start_date").val(obj.start_date);
+    $("#end_date").val(obj.end_date);
+    $("#remark").val(obj.remark);
+    
+
+    //显示完清空数据
+    sessionStorage.clear();
+
+</script>
+</html>

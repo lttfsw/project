@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>信息页面</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+    <link rel="stylesheet" href="../../resources/css/UserInfo.css" type="text/css"></link>
+    <script type="text/javascript" src="../../resources/js/jquery-1.7.1.min.js"></script>
+<!-- <script language=javascript>
+        $(function () {
+        	
+            $(".file").change(function () {
+                var file = this.files[0] // 获取input上传的图片数据;
+                url = window.URL.createObjectURL(file) // 得到bolb对象路径，可当成普通的文件路径一样使用，赋值给src;
+				$("#file").attr("src", url); 
+            })
+            
+       		
+          
+        })
+</script> -->
+</head>
+
+<body>
+<form action="http://120.55.40.199:80/yyt_app/UploadAdministratorServlet" id="form1"
+enctype="multipart/form-data" method="post" name="form1">
+
+<div class="infoPage">
+    <!--<div class="menuInfo">-->
+        <!--<div class="menu active">商户信息</div>-->
+        <!--<div class="menu photoMenu" style="background-color:#999999">照片信息</div>-->
+    <!--</div>-->
+    <div class="infoPageCon">
+        <div class="accountInfo infoCon">
+            <div class="infoTitle">账号信息</div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：&nbsp;</span><input type="text" placeholder="" class="accountNum" id= "account" name="account"/></div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：&nbsp;</span><input type="text" placeholder="" class="accountNum" id= "password" name="password"/></div>
+        	<input type="hidden" name="type" value="admin">
+        	<div class="info-input info-inputR"><span>银&nbsp;行&nbsp;账&nbsp;号：&nbsp;</span><input type="text" placeholder="" class="accountNum" id="bank" name="bank"/></div>
+        	<input class="file" id="file" type="file" name="img">
+        </div>
+        <div class="basicInfo infoCon">
+            <div class="infoTitle">基本信息</div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：&nbsp;</span><input type="text" placeholder="" class="companyName" name="nickname" id="nickname"/></div>
+            <div class="info-input info-inputR"><span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span><input class="account" type="text" placeholder="" class="representative" name="sex" id="sex" /></div>
+            <div class="info-input_1"><span>身份证号码：</span><input class="account" type="text" placeholder="" class="contactName" id="identity" name="identity"></div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：&nbsp;</span><input type="text" placeholder="" class="cellphone" name="tel" id= "tel"/></div>
+            <div class="info-input info-inputR"><span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</span><input type="text" placeholder="" class="checkInTime" id= "phone" name="phone"/></div>
+            <!-- <div style="position: absolute;display:block;float:left;left: 78%;top: 30px;height: 120px;width: 20%;border: 1px solid;display:none">
+                <img src="WebContent/resources/image/head_img.jpg" name="head_img" style="height: 100%;width: 100%;display:none" > -->
+            </div>
+            <div class="info-input"><span>&nbsp;&nbsp;&nbsp;地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：&nbsp;</span><input type="text" placeholder="" class="cellphone" id= "address" name="address"/></div>
+            <div class="info-input info-inputR"><span>Q&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Q：&nbsp;</span><input type="text" placeholder="" class="checkInTime" id= "qq" name="qq"/></div>
+            <div class="info-input_1 input-licence"><span>&nbsp;&nbsp;&nbsp;备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：&nbsp;</span><input type="text" placeholder="" class="licence" id= "remark" name="remark"/></div>
+        
+        <div class="serviceInfo infoCon">
+            <div class="infoTitle">服务信息</div>
+            <!-- <div class="info-input_3"><span>会员等级：</span><input type="text" placeholder="" class="accountNum" id= "account" disabled="disabled"/></div> -->
+            <div class="info-input_3 info-inputR"><span>工作日期：</span><input type="text" placeholder="" class="accountNum" id= "worktime" name="worktime"/></div>
+            <div class="info-input"><span>当前状态：</span><input type="text" placeholder="" class="accountNum" id="status" name="status"/></div>
+            <!--<div class="info-btn"><div class="info-button tiBtn"style="background-color:#999999">提&nbsp;&nbsp;&nbsp;醒</div></div>-->
+        
+        </div>
+        <div style="margin-left:90%;margin-top:5px;">
+                	<input type="Button"  id= "btoks" value="提交">
+                </div>
+        
+        </div>
+        
+        <div class="bottomInfo">
+            <!--<div class="info-input input-remarks"><span>&nbsp;&nbsp;&nbsp;&nbsp;备注：</span><input type="text" placeholder="" class="remarks" disabled="disabled"/></div>-->
+           <div class="info-btn" >
+           	<!-- <input type="Button"  id= "btoks" value="提交"> -->
+                
+                <!-- <div class="info-button cancelBtn" style="position:absolute;float: left;left: 82%;">取&nbsp;&nbsp;&nbsp;消</div> -->
+            </div>
+        </div>
+    </div>
+    <div class="infoPageCon photoCon">
+        照片内容
+    </div>
+</div>
+</form>
+</body>
+<script type="text/javascript">
+$("#btoks").click(function(){
+		var account=$("#account").val();
+	   var nickname=$("#nickname").val();
+	   var sex=$("#sex").val();
+	   var password=$("#password").val();
+	   var identity=$("#identity").val();
+	   var tel =$("#tel").val();
+	   var address =$("#address").val();
+	   var qq =$("#qq").val();
+	   var remark= $("#remark").val();
+	   var worktime= $("#worktime").val();
+	   var status= $("#status").val();
+	   var bank= $("#bank").val();
+	   //var head_img= $("#head_img").val();
+	   //alert("213"+ head_img);
+	   var phone= $("#phone").val();
+	 if((account.length!=11)||(password.length<6)||nickname==""||sex==""||identity==""||tel==""||address==""||qq==""||remark==""||worktime==""||status==""||bank==""||phone=="")
+		 {
+		 	alert("字段不为空且账号为手机号码，密码长度大于六位！请重新输入！");
+		 	return ;
+		 }
+	 document.form1.submit();
+})
+/* $(function(){
+	   $("#btok").click(function(){
+		   var account=$("#account").val();
+		   var nickname=$("#nickname").val();
+		   var sex=$("#sex").val();
+		   var identity=$("#identity").val();
+		   var tel =$("#tel").val();
+		   var address =$("#address").val();
+		   var qq =$("#qq").val();
+		   var remark= $("#remark").val();
+		   var worktime= $("#worktime").val();
+		   var status= $("#status").val();
+		   var bank= $("#bank").val();
+		   var phone= $("#phone").val();
+		 alert("123");
+		 $.ajax({
+			url: "http://120.55.40.199:80/yyt_app/MainServlet",
+  			type: "POST",
+            data:{"method":"addAdminWeb","account":account,"phone":phone,"password":"admin","type":"admin","nickname":nickname,"sex":sex,"identity":identity,"tel":tel,"address":address,"qq":qq,"remark":remark,"worktime":worktime,"bank":bank,"status":status,"img":"123",},
+            dataType: "json",
+            success: function(data){
+            	if(data.code==0){
+               	alert("成功");
+            	}
+            	else{
+            		alert("失败");
+            		}
+       		 }
+         }); 
+	});
+}); */
+</script>
+</html>
